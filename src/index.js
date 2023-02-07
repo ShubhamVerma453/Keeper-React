@@ -10,3 +10,7 @@
 //https://l1pp6.csb.app/
 
 //HINT: You will need to study the classes in teh styles.css file to appy styling.
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(<h1>Hello</h1>, document.getElementById("root"));
