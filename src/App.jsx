@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Note from "./components/Note";
 import Footer from "./components/Footer";
@@ -6,12 +6,30 @@ import noteContent from "./components/noteContent"
 import NewNote from "./components/NewNote";
 
 function App (){
+    const[notes, setNotes] = useState(noteContent);
+    function addNote(title, content){
+        let obj = {
+            title : title,
+            content : content
+        }
+        setNotes(preValues=>{
+            console.log(preValues);
+            let newObj = [...preValues, obj];
+            return newObj;
+        })
+    }
+
+
     return <div>
         <Header />
-        <NewNote />        
-        {noteContent.map(data =>{
+        <NewNote 
+            addNote = {addNote}
+        />
+
+        {notes.map((data, index) =>{
             return <Note 
-            key = {data.key}
+            key = {index}
+            id = {index}
             title = {data.title}
             content = {data.content}
         />
