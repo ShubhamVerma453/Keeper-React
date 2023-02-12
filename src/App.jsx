@@ -7,6 +7,7 @@ import NewNote from "./components/NewNote";
 
 function App (){
     const[notes, setNotes] = useState(noteContent);
+
     function addNote(title, content){
         let obj = {
             title : title,
@@ -17,6 +18,11 @@ function App (){
             let newObj = [...preValues, obj];
             return newObj;
         })
+    }
+
+    function deleteNote(id){
+        let newNotes = notes.filter((note, index) =>(id!=index));
+        setNotes(newNotes);
     }
 
 
@@ -32,6 +38,7 @@ function App (){
             id = {index}
             title = {data.title}
             content = {data.content}
+            delete = {deleteNote}
         />
         })}
 
